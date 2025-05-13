@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 13.05.2025 10:21:06
+// Create Date: 13.05.2025 10:24:44
 // Design Name: 
-// Module Name: half_sub
+// Module Name: half_sub_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,10 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module half_sub(
-input a,b,
-output D,B
-    );
-    assign D = a^b;
-    assign B = ~a&b;
+module half_sub_tb;
+reg a,b;
+wire D,B;
+
+half_sub uut(a,b,D,B);
+initial begin
+
+a=0; b=0; #10
+a=0; b=1; #10
+a=1; b=0; #10
+a=1; b=1; #10
+$finish;
+end
 endmodule
