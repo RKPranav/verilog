@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 13.05.2025 15:55:22
+// Create Date: 13.05.2025 16:01:11
 // Design Name: 
-// Module Name: full_sub
+// Module Name: full_sub_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,10 +20,21 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module full_sub(
-input a,b,Bin,
-output D,Bout
-    );
-    assign D = a^b^Bin;
-    assign Bout =   (~a & b) | (~(a ^ b) & Bin);
+module full_sub_tb;
+reg a,b,Bin;
+wire D,Bout;
+
+full_sub uut(a,b,Bin,D,Bout);
+initial begin
+
+a=0; b=0; Bin=0; #10
+a=0; b=0; Bin=1; #10
+a=0; b=1; Bin=0; #10
+a=0; b=1; Bin=1; #10
+a=1; b=0; Bin=0; #10
+a=1; b=0; Bin=1; #10
+a=1; b=1; Bin=0; #10
+a=1; b=1; Bin=1; #10
+$finish;
+end
 endmodule
